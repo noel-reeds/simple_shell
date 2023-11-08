@@ -8,6 +8,7 @@
 #include <string.h>
 
 /*----PROTOTYPES----*/
+char **_isstrtok(char *str, char *delim);
 int _isstrcmp(char *str1, char *str2);
 char *_isstrcpy(char *dest, char *src);
 char *_isstrdup(char *str);
