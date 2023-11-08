@@ -11,7 +11,7 @@ int _is_token_size(char *str, char delm)
 {
 	int i, dm = 0;
 
-	for (i = 0; str[i] != '\0')
+	for (i = 0; str[i] != '\0'; i++)
 	{
 		if ((str[i] == delm) && (str[i + 1] != delm))
 		{
