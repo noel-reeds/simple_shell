@@ -6,5 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 
+char *_isstrcpy(char *dest, char *src);
 
 #endif
