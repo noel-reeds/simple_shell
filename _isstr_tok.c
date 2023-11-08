@@ -13,7 +13,7 @@ char **_isstr_tok(char *str, char *delm)
 	char **tk = NULL, dc;
 
 	dc = delm[0];
-	str = _is_ignore_delms(str, dc);
+	str = _is_ignore_delm(str, dc);
 	b_size = _is_token_size(str, dc);
 	tk = malloc(sizeof(char *) * (b_size + 2));
 	if (!tk)
@@ -37,7 +37,7 @@ char **_isstr_tok(char *str, char *delm)
 			tk[p][i] = '\0';
 		}
 
-		if (k < end && (str[k + 1] != dc && str[k + 1] = '\0'))
+		if (k < end && (str[k + 1] != dc && str[k + 1] == '\0'))
 			p++;
 		k++;
 	}

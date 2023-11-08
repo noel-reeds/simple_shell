@@ -10,8 +10,8 @@
 
 size_t _is_getline(char **str)
 {
-	size_t i = 0, size = 0, k = 0, k2 = 0, n = 0;
-   char buff[1024];
+	ssize_t i = 0, size = 0, k = 0, k2 = 0, n = 0;
+	char buff[1024];
 
    while (k2 == 0 && (i = read(STDIN_FILENO, buff, 1024 - 1)))
    {

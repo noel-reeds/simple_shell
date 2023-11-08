@@ -21,7 +21,7 @@ char *_isstrdup(char *str)
 	dup_str = malloc(sizeof(char) * len2);
 	if (dup_str == NULL)
 		return (NULL);
-	for (m = 0, m < len2, m++)
+	for (m = 0; m < len2; m++)
 		dup_str[m] = str[m];
 	return (dup_str);
 }
