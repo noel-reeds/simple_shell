@@ -7,5 +7,7 @@
 #include <string.h>
 
 char *_isstrcpy(char *dest, char *src);
+char *_isstrcat(char *dest, char *src);
+void *_isrealloc(void *ptr, unsigned int prev_size, unsigned int new_size);
 
 #endif
