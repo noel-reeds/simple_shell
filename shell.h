@@ -13,5 +13,6 @@ char *_isstrcpy(char *dest, char *src);
 char *_isstrdup(char *str);
 char *_isstrcat(char *dest, char *src);
 void *_isrealloc(void *ptr, unsigned int prev_size, unsigned int new_size);
+size_t _is_getline(**str);
 
 #endif
