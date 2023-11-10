@@ -7,7 +7,7 @@
  * Return: 1 if success or -1 if failure
  */
 
-int delete_nodeint_at_index(list_t **heed, int index)
+int delete_nodeint_at_index(list_t **head, int index)
 {
 	list_t *n_head;
 	list_t *hold;
@@ -15,7 +15,7 @@ int delete_nodeint_at_index(list_t **heed, int index)
 
 	if (!*head)
 		return (-1);
-	if (index = 0)
+	if (index == 0)
 	{
 		hold = (*head)->next;
 		free((*head)->var);
