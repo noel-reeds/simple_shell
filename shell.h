@@ -39,5 +39,11 @@ list_t *add_end_node(list_t **head, char *str);
 size_t print_l(list_t *h);
 int _is_execve(char **s, list_t *env, int n);
 void _is_not_found(char *str, int c, list_t *env);
+void cant_cd_to(char *str, int c, list_t *env);
+void _is_illegal_number(char *str, int c, list_t *env);
+char *_is_getenv(char *str, list_t *env);
+char *_isint_to_string(int num);
+char *_is_which(char *str, list_t *env);
+char **custom_str_tok(char *str, char *delm);
 
 #endif
