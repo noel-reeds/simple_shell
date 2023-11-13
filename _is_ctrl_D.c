@@ -7,7 +7,7 @@
  * @env: environment variable
  */
 
-void _is_ctrll_D(int i, char *cmd, list_t *env)
+void _is_ctrl_D(int i, char *cmd, list_t *env)
 {
 	if (i == 0)
 	{

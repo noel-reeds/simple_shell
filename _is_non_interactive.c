@@ -3,7 +3,7 @@
 char *custom_ignore(char *str);
 
 /**
- * _is_nonn_interactive - handles pipes command into shell
+ * _is_non_interactive - handles pipes command into shell
  * @env: environment variable
  */
 

@@ -22,7 +22,8 @@ int _is_prompt(char **en)
 		else
 			_is_non_interactive(env);
 		signal(SIGINT, _is_ctrl_C);
-		cmd = NULL; i = 0;
+		cmd = NULL;
+		i = 0;
 		i = _is_getline(&cmd);
 		_is_ctrl_D(i, cmd, env);
 		n_cmd = cmd;

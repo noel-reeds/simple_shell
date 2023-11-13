@@ -37,26 +37,26 @@ char **custom_str_tok(char *str, char *delm)
 
 	bf_size = custom_token_size(str, dc);
 	tk = malloc(sizeof(char *) * (bf_size + 2));
-   if (!tk)
-	   return (NULL);
-   while (str[se] != '\0')
-	   se++;
-   while (si < se)
-   {
-	   len = _is_token_strlen(str, si, dc);
-	   tk[p] = malloc(sizeof(char) * (len + 1));
-	   if (!tk[p])
-		   return (NULL);
-	   while ((str[si] != dc) && (str[si] != '\0'))
-	   {
-		   tk[p][i] = str[si];
-		   i++;
-		   si++;
-	   }
-	   tk[p][i] = '\0';
-	   p++;
-	   i++;
-   }
-   tk[p] = NULL;
-   return (tk);
+	if (!tk)
+		return (NULL);
+	while (str[se] != '\0')
+		se++;
+	while (si < se)
+	{
+		len = _is_token_strlen(str, si, dc);
+		tk[p] = malloc(sizeof(char) * (len + 1));
+		if (!tk[p])
+			return (NULL);
+		while ((str[si] != dc) && (str[si] != '\0'))
+		{
+			tk[p][i] = str[si];
+			i++;
+			si++;
+		}
+		tk[p][i] = '\0';
+		p++;
+		i++;
+	}
+	tk[p] = NULL;
+	return (tk);
 }

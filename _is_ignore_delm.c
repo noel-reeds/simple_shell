@@ -1,6 +1,7 @@
 #include "shell.h"
 
-/*_is_ignore_delm - function that return string without preceeding delimiter
+/**
+ * _is_ignore_delm - function that return string without preceeding delimiter
  * @str: string
  * @delm: delimiter
  * Return: string

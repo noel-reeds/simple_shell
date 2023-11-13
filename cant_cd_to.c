@@ -4,7 +4,7 @@
  * cant_cd_to - output error "can't cd to a file"
  * @str: input command
  * @c: command
- * @nv: environment variable
+ * @env: environment variable
  */
 
 void cant_cd_to(char *str, int c, list_t *env)

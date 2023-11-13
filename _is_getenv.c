@@ -20,9 +20,9 @@ char *custom_strdup(char *str, int c)
 	dup_str = malloc(sizeof(char) * (len - c));
 	if (!dup_str)
 		return (NULL);
-	for (i = 0; i < (len -c); i++)
+	for (i = 0; i < (len - c); i++)
 	{
-		*(dup_str + i) = *(str +c + i);
+		*(dup_str + i) = *(str + c + i);
 	}
 	return (dup_str);
 }

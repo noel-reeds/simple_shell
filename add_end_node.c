@@ -15,7 +15,7 @@ list_t *add_end_node(list_t **head, char *str)
 	if (!head || !str)
 		return (NULL);
 	new = malloc(sizeof(list_t));
-	if(!new)
+	if (!new)
 		return (NULL);
 	new->var = _isstrdup(str);
 	new->next = NULL;

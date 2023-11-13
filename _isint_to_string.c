@@ -27,6 +27,7 @@ char *_isint_to_string(int num)
 {
 	int dt, tn, i = 0, t, x;
 	char *res;
+
 	dt = num;
 	tn = 1;
 

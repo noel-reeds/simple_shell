@@ -8,7 +8,7 @@
  * Return: pointer to the rallocated memory
  */
 
-void *_isrealloc(void *ptr, unsigned int prev_size, unsigned new_size)
+void *_isrealloc(void *ptr, unsigned int prev_size, unsigned int new_size)
 {
 	void *p;
 	unsigned int i;

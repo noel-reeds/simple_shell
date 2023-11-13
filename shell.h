@@ -14,6 +14,12 @@
 #include <dirent.h>
 #include <signal.h>
 
+/**
+ * struct list - environment link list variable
+ * @var: holds environment variable
+ * @next: points to next node
+ */
+
 typedef struct list
 {
 	char *var;
@@ -52,5 +58,7 @@ char *_is_getenv(char *str, list_t *env);
 char *_isint_to_string(int num);
 char *_is_which(char *str, list_t *env);
 char **custom_str_tok(char *str, char *delm);
+char *_is_ignore_space(char *str);
+int _is_cd(char **str, list_t *env, int n);
 
 #endif
