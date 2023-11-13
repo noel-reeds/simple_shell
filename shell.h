@@ -60,5 +60,6 @@ char *_is_which(char *str, list_t *env);
 char **custom_str_tok(char *str, char *delm);
 char *_is_ignore_space(char *str);
 int _is_cd(char **str, list_t *env, int n);
+int __exit(char **str, list_t *env, int n, char **cmd);
 
 #endif
