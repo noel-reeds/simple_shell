@@ -7,6 +7,6 @@
 
 void _is_ctrl_C(int s)
 {
-	(void)n;
+	(void)s;
 	write(STDOUT_FILENO, "\n$ ", 3);
 }

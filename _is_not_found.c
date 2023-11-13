@@ -19,7 +19,7 @@ void _is_not_found(char *str, int c, list_t *env)
 	free(shell);
 	write(STDOUT_FILENO, ": ", 2);
 	n = _isint_to_string(c);
-	for (cn = 0, n[cn] != '\0'; cn++)
+	for (cn = 0; n[cn] != '\0'; cn++)
 		;
 	write(STDOUT_FILENO, n, cn);
 	free(n);

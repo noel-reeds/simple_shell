@@ -17,7 +17,7 @@ char *custom_strdup(char *str, int c)
 	for (len = 0; *(str + len); len++)
 		;
 	len++;
-	dup_str = mallac(sizeof(char) * (len - c));
+	dup_str = malloc(sizeof(char) * (len - c));
 	if (!dup_str)
 		return (NULL);
 	for (i = 0; i < (len -c); i++)
@@ -40,7 +40,7 @@ char *_is_getenv(char *str, list_t *env)
 
 	while (env)
 	{
-		for (j = 0; (env->var)[i] == str[i]; i++)
+		for (i = 0; (env->var)[i] == str[i]; i++)
 			;
 		if (str[i] == '\0' && (env->var)[i] == '=')
 			break;

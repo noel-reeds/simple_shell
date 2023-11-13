@@ -11,7 +11,7 @@ void _is_non_interactive(list_t *env)
 {
 	size_t i = 0, n = 0;
 	int cmd_line_no = 0, exit_stat = 0;
-	char *cmd = NULL, *n_cmd = NULL, **n_line, *tk;
+	char *cmd = NULL, *n_cmd = NULL, **n_line, **tk;
 
 	i = _is_getline(&cmd);
 	if (i == 0)
@@ -20,7 +20,7 @@ void _is_non_interactive(list_t *env)
 		exit(0);
 	}
 	n_cmd = cmd;
-	cmd custom_ignore(cmd);
+	cmd = custom_ignore(cmd);
 	n_line = _isstr_tok(cmd, "\n");
 	if (n_cmd)
 		free(n_cmd);

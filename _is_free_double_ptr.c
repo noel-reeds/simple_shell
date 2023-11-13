@@ -14,5 +14,5 @@ void _is_free_double_ptr(char **str)
 		free(str[i]);
 		i++;
 	}
-	free(str):
+	free(str);
 }

@@ -13,7 +13,7 @@ char *_is_which(char *str, list_t *env)
 	int i;
 
 	pth = _is_getenv("PATH", env);
-	toks = custom_str_tok(path, ":");
+	toks = custom_str_tok(pth, ":");
 	free(pth);
 
 	for (i = 0; toks[i]; i++)

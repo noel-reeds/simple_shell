@@ -2,7 +2,7 @@
 
 /**
  * _is_env_linked_list - create a linked list from environment
- * @env: nvironment variable
+ * @env: environment variable
  * Return: linked list
  */
 

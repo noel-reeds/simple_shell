@@ -6,7 +6,7 @@ void custom_exit(char **str, list_t *env);
  * _is_execve - execute input command
  * @s: command
  * @env: environmnt variable
- * $n: command: to be used in error message
+ * @n: command: to be used in error message
  * Return: always 0
  */
 
@@ -47,7 +47,7 @@ int _is_execve(char **s, list_t *env, int n)
 			wait(&stat);
 			_is_free_double_ptr(s);
 			if (i == 0)
-				free(hold)
+				free(hold);
 		}
 	}
 	return (0);
