@@ -3,7 +3,7 @@
 /**
  * _is_cd_only - change directory to home directory
  * @env: environment variable
- * @cureent: current working directory
+ * @current: current working directory
  */
 
 void _is_cd_only(list_t *env, char *current)
@@ -23,13 +23,13 @@ void _is_cd_only(list_t *env, char *current)
 }
 
 /**
- * _is_cd_execute - execute cd
+ * _is_cd_execute - function to execute cd
  * @env: environment variabl to b updated
  * @current: current working directory
  * @dir: directory path we want to change to
  * @str: error argument
  * @n: number of errors
- * Return 0 if success and 2 if failure
+ * Return: 0 if success and 2 if failure
  */
 
 int _is_cd_execute(list_t *env, char *current, char *dir, char *str, int n)
