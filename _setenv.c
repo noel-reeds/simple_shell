@@ -16,7 +16,7 @@ int _setenv(list_t **env, char **str)
 	if (!str[1] || !str[2])
 	{
 		write(STDOUT_FILENO, "Too few arguments\n", 18);
-		_is_free_double_pointer(str);
+		_is_free_double_ptr(str);
 		return (-1);
 	}
 	cat = _isstrdup(str[1]);

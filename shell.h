@@ -47,7 +47,7 @@ char *custom_ignore(char *str);
 void _is_non_interactive(list_t *env);
 void _is_free_double_ptr(char **str);
 void  _is_free_linked_list(list_t *list);
-int deleteint_at_index(list_t **head, int index);
+int delete_nodeint_at_index(list_t **head, int index);
 list_t *add_end_node(list_t **head, char *str);
 size_t print_l(list_t *h);
 int _is_execve(char **s, list_t *env, int n);
@@ -61,5 +61,12 @@ char **custom_str_tok(char *str, char *delm);
 char *_is_ignore_space(char *str);
 int _is_cd(char **str, list_t *env, int n);
 int __exit(char **str, list_t *env, int n, char **cmd);
+int find_env(list_t *env, char *str);
+int _setenv(list_t **env, char **str);
+int _unsetenv(list_t **env, char **str);
+int custom_setenv(list_t **env, char *n, char *dir);
+int _is_atoi(char *str);
+char *custom_strcat(char *dest, char *src);
+int _is_built_in(char **token, list_t *env, int n, char **cmd);
 
 #endif

@@ -36,7 +36,7 @@ int _is_cd_execute(list_t *env, char *current, char *dir, char *str, int n)
 {
 	int m = 0;
 
-	if (access(dir, F_0K) == 0)
+	if (access(dir, F_OK) == 0)
 	{
 		custom_setenv(&env, "OLDPWD", current);
 		free(current);
