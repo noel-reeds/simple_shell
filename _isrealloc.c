@@ -37,7 +37,7 @@ void *_isrealloc(void *ptr, unsigned int prev_size, unsigned int new_size)
 	if (!p)
 		return (NULL);
 
-	for (i = 0; i < prev_size && i < new_size; i++)
+	for (i = 0; (i < prev_size) && (i < new_size); i++)
 	{
 		*((char *)p + i) = *((char *)ptr + i);
 	}
