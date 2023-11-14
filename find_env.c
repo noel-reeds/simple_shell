@@ -10,6 +10,7 @@
 int find_env(list_t *env, char *str)
 {
 	int j = 0, i = 0;
+
 	while (env)
 	{
 		while ((env->var)[j] == str[j])
