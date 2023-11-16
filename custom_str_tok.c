@@ -46,7 +46,10 @@ char **custom_str_tok(char *str, char *delm)
 		len = _is_token_strlen(str, si, dc);
 		tk[p] = malloc(sizeof(char) * (len + 1));
 		if (!tk[p])
+		{
+			_is_free_double_ptr(tk);
 			return (NULL);
+		}
 		while ((str[si] != dc) && (str[si] != '\0'))
 		{
 			tk[p][i] = str[si];

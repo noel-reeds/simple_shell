@@ -10,7 +10,7 @@
 int _is_prompt(char **en)
 {
 	list_t *env;
-	size_t i = 0, m = 0;
+	size_t i, m = 0;
 	int cmd_line_no = 0, exit_stat = 0;
 	char *cmd, *n_cmd, **tk;
 
@@ -23,7 +23,6 @@ int _is_prompt(char **en)
 			_is_non_interactive(env);
 		signal(SIGINT, _is_ctrl_C);
 		cmd = NULL;
-		i = 0;
 		i = _is_getline(&cmd);
 		_is_ctrl_D(i, cmd, env);
 		n_cmd = cmd;
@@ -43,7 +42,7 @@ int _is_prompt(char **en)
 		exit_stat = _is_built_in(tk, env, cmd_line_no, NULL);
 		if (exit_stat)
 			continue;
-		exit_stat = _is_execve(tk, env, cmd_line_no);
+		_is_execve(tk, env, cmd_line_no);
 	} while (1);
 	return (exit_stat);
 }

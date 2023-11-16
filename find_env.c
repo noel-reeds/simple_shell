@@ -13,6 +13,7 @@ int find_env(list_t *env, char *str)
 
 	while (env)
 	{
+		j = 0;
 		while ((env->var)[j] == str[j])
 			j++;
 		if (str[j] == '\0')

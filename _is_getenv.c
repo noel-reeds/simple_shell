@@ -10,14 +10,14 @@
 char *custom_strdup(char *str, int c)
 {
 	char *dup_str;
-	int i, len;
+	int i, len = 0;
 
 	if (!str)
 		return (NULL);
-	for (len = 0; *(str + len); len++)
-		;
+	while (*(str + len))
+		len++;
 	len++;
-	dup_str = malloc(sizeof(char) * (len - c));
+	dup_str = malloc(sizeof(char) * (len - c + 1));
 	if (!dup_str)
 		return (NULL);
 	for (i = 0; i < (len - c); i++)
@@ -38,7 +38,7 @@ char *_is_getenv(char *str, list_t *env)
 {
 	int i, c;
 
-	while (env)
+	while (env != NULL)
 	{
 		for (i = 0; (env->var)[i] == str[i]; i++)
 			;
@@ -50,5 +50,8 @@ char *_is_getenv(char *str, list_t *env)
 	for (c = 0; str[c] != '\0'; c++)
 		;
 	c++;
-	return (custom_strdup(env->var, c));
+	if (env != NULL)
+		return (custom_strdup(env->var, c));
+	else
+		return (NULL);
 }
