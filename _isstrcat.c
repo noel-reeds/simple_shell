@@ -9,7 +9,7 @@
 
 char *_isstrcat(char *dest, char *src)
 {
-	int len = 0, len2 = 0, t_len = 0, i;
+	int len = 0, len2 = 0, t_len = 0, i = 0;
 
 	while (dest[len] != '\0')
 	{

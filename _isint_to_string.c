@@ -8,11 +8,11 @@
 
 int len(int n)
 {
-	int cn;
+	int cn, d = n;
 
-	for (cn = 0; n > 9 || n < -9; cn++)
+	for (cn = 0; d > 9 || d < -9; cn++)
 	{
-		n /= 10;
+		d /= 10;
 	}
 	return (cn);
 }
@@ -25,7 +25,7 @@ int len(int n)
 
 char *_isint_to_string(int num)
 {
-	int dt, tn, i = 0, t, x;
+	int dt, tn, i = 0, t = 0, x;
 	char *res;
 
 	dt = num;
@@ -42,6 +42,11 @@ char *_isint_to_string(int num)
 		i++;
 	}
 	for (x = 0; dt > 9 || dt < -9; x++)
+	{
+		dt /= 10;
+		tn *= 10;
+	}
+	for (dt = num; x >= 0; x--)
 	{
 		if (dt < 0)
 		{

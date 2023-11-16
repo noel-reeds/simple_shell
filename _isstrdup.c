@@ -15,13 +15,13 @@ char *_isstrdup(char *str)
 	len2 = 0;
 	if (str == NULL)
 		return (NULL);
-	while (str[len2])
+	while (*(str + len2))
 		len2++;
 	len2++;
 	dup_str = malloc(sizeof(char) * len2);
 	if (dup_str == NULL)
 		return (NULL);
 	for (m = 0; m < len2; m++)
-		dup_str[m] = str[m];
+		*(dup_str + m) = *(str + m);
 	return (dup_str);
 }

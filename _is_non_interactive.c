@@ -16,6 +16,7 @@ void _is_non_interactive(list_t *env)
 	i = _is_getline(&cmd);
 	if (i == 0)
 	{
+		free(n_cmd);
 		free(cmd);
 		exit(0);
 	}

@@ -13,7 +13,7 @@ size_t print_l(list_t *h)
 
 	if (!h)
 		return (0);
-	for (cn = 0; c_list; cn++)
+	for (cn = 0; c_list != NULL; cn++)
 	{
 		if (!c_list->var)
 		{
@@ -22,12 +22,14 @@ size_t print_l(list_t *h)
 		}
 		else
 		{
+			c = 0;
 			while ((c_list->var)[c] != '\0')
 				c++;
 			write(STDOUT_FILENO, c_list->var, c);
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		c_list = c_list->next;
+		cn++;
 	}
 	return (cn);
 }
