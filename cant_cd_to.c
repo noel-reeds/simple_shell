@@ -9,24 +9,27 @@
 
 void cant_cd_to(char *str, int c, list_t *env)
 {
-	int cn;
-	char *shell, *n;
+	int count = 0;
+	char *shell, *num;
 
 	shell = _is_getenv("_", env);
-	for (cn = 0; shell[cn] != '\0'; cn++)
-		;
-	write(STDOUT_FILENO, shell, cn);
+	while (shell[count] != '\0')
+		count++;
+	write(STDOUT_FILENO, shell, count);
 	free(shell);
 	write(STDOUT_FILENO, ": ", 2);
-	n = _isint_to_string(c);
-	for (cn = 0; n[cn] != '\0'; cn++)
-		;
-	write(STDOUT_FILENO, n, cn);
-	free(n);
+	num = _isint_to_string(c);
+	count = 0;
+	while (num[count] != '\0')
+		count++;
+	write(STDOUT_FILENO, num, count);
+	free(num);
 	write(STDOUT_FILENO, ": ", 2);
 	write(STDOUT_FILENO, "cd: can't cd to ", 16);
-	for (cn = 0; str[cn] != '\0'; cn++)
-		;
-	write(STDOUT_FILENO, str, cn);
+	count = 0;
+	while (str[count] != '\0')
+		count++;
+	write(STDOUT_FILENO, str, count);
 	write(STDOUT_FILENO, "\n", 1);
 }
+

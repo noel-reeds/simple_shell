@@ -21,8 +21,7 @@ void _is_cd_only(list_t *env, char *current)
 	free(current);
 	free(home);
 }
-
-/**
+/*
  * _is_cd_execute - function to execute cd
  * @env: environment variabl to b updated
  * @current: current working directory
@@ -34,9 +33,9 @@ void _is_cd_only(list_t *env, char *current)
 
 int _is_cd_execute(list_t *env, char *current, char *dir, char *str, int n)
 {
-	int m = 0;
+	int i = 0;
 
-	if (dir != NULL && access(dir, F_OK) == 0)
+	if (access(dir, F_OK) == 0)
 	{
 		custom_setenv(&env, "OLDPWD", current);
 		free(current);
@@ -50,9 +49,9 @@ int _is_cd_execute(list_t *env, char *current, char *dir, char *str, int n)
 	{
 		cant_cd_to(str, n, env);
 		free(current);
-		m = 2;
+		i = 2;
 	}
-	return (m);
+	return (i);
 }
 
 /**
@@ -65,11 +64,11 @@ int _is_cd_execute(list_t *env, char *current, char *dir, char *str, int n)
 
 int _is_cd(char **str, list_t *env, int n)
 {
-	char *cnt = NULL, *dir = NULL;
+	char *current = NULL, *dir = NULL;
 	int exit_stat = 0;
 
-	cnt = getcwd(cnt, 0);
-	if (str[1])
+	current = getcwd(current, 0);
+	if (str[1] != NULL)
 	{
 		if (str[1][0] == '~')
 		{
@@ -92,11 +91,11 @@ int _is_cd(char **str, list_t *env, int n)
 			else
 				dir = _isstrdup(str[1]);
 		}
-		exit_stat = _is_cd_execute(env, cnt, dir, str[1], n);
+		exit_stat = _is_cd_execute(env, current, dir, str[1], n);
 		free(dir);
 	}
 	else
-		_is_cd_only(env, cnt);
+		_is_cd_only(env, current);
 	_is_free_double_ptr(str);
 	return (exit_stat);
 }

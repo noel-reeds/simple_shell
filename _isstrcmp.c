@@ -11,14 +11,13 @@
  */
 int _isstrcmp(char *str1, char *str2)
 {
-	int m;
+	int i = 0;
 
-	m = 0;
-	while (*(str1 + m) == *(str2 + m) && *(str1 + m))
-	{
-		m++;
-	}
-	if (*(str2 + m))
-		return (*(str1 + m) - *(str2 + m));
-	return (0);
+	while (*(str1 + i) == *(str2 + i) && *(str1 + i))
+		i++;
+
+	if (*(str2 + i))
+		return (*(str1 + i) - *(str2 + i));
+	else
+		return (0);
 }

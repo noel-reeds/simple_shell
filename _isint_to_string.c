@@ -8,13 +8,15 @@
 
 int len(int n)
 {
-	int cn, d = n;
+	int count = 0;
+	int num = n;
 
-	for (cn = 0; d > 9 || d < -9; cn++)
+	while (num > 9 || num < -9)
 	{
-		d /= 10;
+		num /= 10;
+		count++;
 	}
-	return (cn);
+	return (count);
 }
 
 /**
@@ -25,15 +27,15 @@ int len(int n)
 
 char *_isint_to_string(int num)
 {
-	int dt, tn, i = 0, t = 0, x;
+	int digits, tens, i = 0, t = 0, x;
 	char *res;
 
-	dt = num;
-	tn = 1;
+	digits = num;
+	tens = 1;
 
 	if (num < 0)
 		t = 1;
-	res = malloc(sizeof(char) * (len(dt) + 2 + t));
+	res = malloc(sizeof(char) * (len(digits) + 2 + t));
 	if (!res)
 		return (NULL);
 	if (num < 0)
@@ -41,25 +43,25 @@ char *_isint_to_string(int num)
 		res[i] = '-';
 		i++;
 	}
-	for (x = 0; dt > 9 || dt < -9; x++)
+	for (x = 0; digits > 9 || digits < -9; x++)
 	{
-		dt /= 10;
-		tn *= 10;
+		digits /= 10;
+		tens *= 10;
 	}
-	for (dt = num; x >= 0; x--)
+	for (digits = num; x >= 0; x--)
 	{
-		if (dt < 0)
+		if (digits < 0)
 		{
-			res[i] = (dt / tn) * -1 + '0';
+			res[i] = (digits / tens) * -1 + '0';
 			i++;
 		}
 		else
 		{
-			res[i] = (dt / tn) + '0';
+			res[i] = (digits / tens) + '0';
 			i++;
 		}
-		dt %= tn;
-		tn /= 10;
+		digits %= tens;
+		tens /= 10;
 	}
 	res[i] = '\0';
 	return (res);

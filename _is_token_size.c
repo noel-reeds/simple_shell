@@ -9,18 +9,19 @@
 
 int _is_token_size(char *str, char delm)
 {
-	int i, dm = 0;
+	int i = 0, num_delm = 0;
 
-	for (i = 0; str[i] != '\0'; i++)
+	while (str[i] != '\0')
 	{
 		if ((str[i] == delm) && (str[i + 1] != delm))
 		{
-			dm++;
+			num_delm++;
 		}
 		if ((str[i] == delm) && (str[i + 1] == '\0'))
 		{
-			dm--;
+			num_delm--;
 		}
+		i++;
 	}
-	return (dm);
+	return (num_delm);
 }

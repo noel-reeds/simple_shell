@@ -9,29 +9,29 @@
 
 char *_is_which(char *str, list_t *env)
 {
-	char *pth, *cat = NULL, **toks, *direc;
-	int i;
+	char *pth, *cat = NULL, **toks;
+	int i = 0;
 
 	pth = _is_getenv("PATH", env);
 	toks = custom_str_tok(pth, ":");
 	free(pth);
 
-	for (i = 0; toks[i]; i++)
+	i = 0;
+	while (toks[i] != NULL)
 	{
 		if (toks[i][0] == '\0')
-			direc = getcwd(NULL, 0);
+			cat = getcwd(cat, 0);
 		else
-			direc = _isstrdup(toks[i]);
-		cat = _isstrcat(direc, "/");
+			cat = _isstrdup(toks[i]);
+		cat = _isstrcat(cat, "/");
 		cat = _isstrcat(cat, str);
 		if (access(cat, F_OK) == 0)
 		{
 			_is_free_double_ptr(toks);
-			free(direc);
 			return (cat);
 		}
 		free(cat);
-		free(direc);
+		i++;
 	}
 	_is_free_double_ptr(toks);
 	return (str);

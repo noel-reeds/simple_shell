@@ -10,23 +10,25 @@
 list_t *add_end_node(list_t **head, char *str)
 {
 	list_t *new;
-	list_t *hold;
+	list_t *holder;
 
 	if (!head || !str)
 		return (NULL);
 	new = malloc(sizeof(list_t));
 	if (!new)
 		return (NULL);
+
 	new->var = _isstrdup(str);
 	new->next = NULL;
-	hold = *head;
-	if (hold)
+
+	holder = *head;
+	if (holder != NULL)
 	{
-		while (hold->next)
+		while (holder->next != NULL)
 		{
-			hold = hold->next;
+			holder = holder->next;
 		}
-		hold->next = new;
+		holder->next = new;
 	}
 	else
 	{

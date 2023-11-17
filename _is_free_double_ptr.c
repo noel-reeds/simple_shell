@@ -9,7 +9,7 @@ void _is_free_double_ptr(char **str)
 {
 	int i = 0;
 
-	while (str[i])
+	while (str[i] != NULL)
 	{
 		free(str[i]);
 		i++;

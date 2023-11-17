@@ -7,13 +7,14 @@
 
 void _is_free_linked_list(list_t *list)
 {
-	list_t *hold;
+	list_t *holder;
 
 	while (list)
 	{
-		hold = list;
+		holder = list;
 		list = list->next;
-		free(hold->var);
-		free(hold);
+		free(holder->var);
+		free(holder);
 	}
+
 }

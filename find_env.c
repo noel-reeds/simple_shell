@@ -9,9 +9,9 @@
 
 int find_env(list_t *env, char *str)
 {
-	int j = 0, i = 0;
+	int j = 0, index = 0;
 
-	while (env)
+	while (env != NULL)
 	{
 		j = 0;
 		while ((env->var)[j] == str[j])
@@ -19,9 +19,9 @@ int find_env(list_t *env, char *str)
 		if (str[j] == '\0')
 			break;
 		env = env->next;
-		i++;
+		index++;
 	}
-	if (!env)
+	if (env == NULL)
 		return (-1);
-	return (i);
+	return (index);
 }

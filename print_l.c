@@ -9,13 +9,14 @@
 size_t print_l(list_t *h)
 {
 	list_t *c_list = h;
-	int cn, c = 0;
+	int count = 0;
+	int c = 0;
 
-	if (!h)
+	if (h == NULL)
 		return (0);
-	for (cn = 0; c_list != NULL; cn++)
+	while (c_list != NULL)
 	{
-		if (!c_list->var)
+		if (c_list->var == NULL)
 		{
 			write(STDOUT_FILENO, "(nil)", 5);
 			write(STDOUT_FILENO, "\n", 1);
@@ -25,11 +26,11 @@ size_t print_l(list_t *h)
 			c = 0;
 			while ((c_list->var)[c] != '\0')
 				c++;
-			write(STDOUT_FILENO, c_list->var, c);
+	write(STDOUT_FILENO, c_list->var, c);
 			write(STDOUT_FILENO, "\n", 1);
 		}
 		c_list = c_list->next;
-		cn++;
+		count++;
 	}
-	return (cn);
+	return (count);
 }
