@@ -22,7 +22,8 @@ int _is_prompt(char **en)
 		else
 			_is_non_interactive(env);
 		signal(SIGINT, _is_ctrl_C);
-		command = NULL; i = 0;
+		command = NULL;
+		i = 0;
 		i = _is_getline(&command);
 		_is_ctrl_D(i, command, env);
 		n_command = command;
@@ -33,9 +34,11 @@ int _is_prompt(char **en)
 		command[n] = '\0';
 		if (command[0] == '\0')
 		{
-			free(n_command); continue;
+			free(n_command);
+			continue;
 		}
-		token = NULL; token = _isstr_tok(command, " ");
+		token = NULL;
+		token = _isstr_tok(command, " ");
 		if (n_command != NULL)
 			free(n_command);
 		exit_stat = _is_built_in(token, env, command_line_no, NULL);

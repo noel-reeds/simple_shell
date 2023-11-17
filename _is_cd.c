@@ -21,7 +21,8 @@ void _is_cd_only(list_t *env, char *current)
 	free(current);
 	free(home);
 }
-/*
+
+/**
  * _is_cd_execute - function to execute cd
  * @env: environment variabl to b updated
  * @current: current working directory
