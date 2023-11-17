@@ -9,11 +9,11 @@
 
 int _setenv(list_t **env, char **str)
 {
-	int i = 0, j = 0;
+	int index = 0, j = 0;
 	char *cat;
-	list_t *hold;
+	list_t *holder;
 
-	if (!str[1] || !str[2])
+	if (str[1] == NULL || str[2] == NULL)
 	{
 		write(STDOUT_FILENO, "Too few arguments\n", 18);
 		_is_free_double_ptr(str);
@@ -22,19 +22,21 @@ int _setenv(list_t **env, char **str)
 	cat = _isstrdup(str[1]);
 	cat = _isstrcat(cat, "=");
 	cat = _isstrcat(cat, str[2]);
-	i = find_env(*env, str[1]);
-	if (i == -1)
+	index = find_env(*env, str[1]);
+	if (index == -1)
+	{
 		add_end_node(env, cat);
+	}
 	else
 	{
-		hold = *env;
-		while (j < i)
+		holder = *env;
+		while (j < index)
 		{
-			hold = hold->next;
+			holder = holder->next;
 			j++;
 		}
-		free(hold->var);
-	   hold->var = _isstrdup(cat);
+		free(holder->var);
+		holder->var = _isstrdup(cat);
 	}
 	free(cat);
 	_is_free_double_ptr(str);

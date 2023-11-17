@@ -9,45 +9,40 @@
 
 char **_isstr_tok(char *str, char *delm)
 {
-	int b_size = 0, p = 0, i = 0, len = 0, end = 0, k = 0, t = 0;
-	char **tk = NULL, dc;
+	int buffsize = 0, p = 0, si = 0, i = 0, len = 0, se = 0, t = 0;
+	char **toks = NULL, d_ch;
 
-	dc = delm[0];
-	str = _is_ignore_delm(str, dc);
-	b_size = _is_token_size(str, dc);
-	tk = malloc(sizeof(char *) * (b_size + 2));
-	if (!tk)
-	{
+	d_ch = delm[0];
+	str = _is_ignore_delm(str, d_ch);
+	buffsize = _is_token_size(str, d_ch);
+	toks = malloc(sizeof(char *) * (buffsize + 2));
+	if (!toks)
 		return (NULL);
-	}
-	while (str[end] != '\0')
-		end++;
-	while (k < end)
+	while (str[se] != '\0')
+		se++;
+	while (si < se)
 	{
-		if (str[k] != dc)
+		if (str[si] != d_ch)
 		{
-			len = _is_token_strlen(str, k, dc);
-			tk[p] = malloc(sizeof(char) * (len + 1));
-			if (!tk[p])
-			{
-				_is_free_double_ptr(tk);
+			len = _is_token_strlen(str, si, d_ch);
+			toks[p] = malloc(sizeof(char) * (len + 1));
+			if (!toks[p])
 				return (NULL);
-			}
-			while ((str[k] != dc) && (str[k] != '\0'))
+			i = 0;
+			while ((str[si] != d_ch) && (str[si] != '\0'))
 			{
-				tk[p][i] = str[k];
+				toks[p][i] = str[si];
 				i++;
-				k++;
+				si++;
 			}
-			tk[p][i] = '\0';
+			toks[p][i] = '\0';
 			t++;
 		}
-
-		if (k < end && (str[k + 1] != dc && str[k + 1] == '\0'))
+		if (si < se && (str[si + 1] != d_ch && str[si + 1] != '\0'))
 			p++;
-		k++;
+		si++;
 	}
 	p++;
-	tk[p] = NULL;
-	return (tk);
+	toks[p] = NULL;
+	return (toks);
 }

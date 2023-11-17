@@ -12,20 +12,18 @@ void custom_exit(char **str, list_t *env);
 
 int _is_execve(char **s, list_t *env, int n)
 {
-	char *hold;
-	int stat = 0, i = 0;
+	char *holder;
+	int status = 0, t = 0;
 	pid_t pid;
 
 	if (access(s[0], F_OK) == 0)
 	{
-		hold = s[0];
-		i = 1;
+		holder = s[0];
+		t = 1;
 	}
 	else
-	{
-		hold = _is_which(s[0], env);
-	}
-	if (access(hold, X_OK) != 0)
+		holder = _is_which(s[0], env);
+	if (access(holder, X_OK) != 0)
 	{
 		_is_not_found(s[0], n, env);
 		_is_free_double_ptr(s);
@@ -36,7 +34,7 @@ int _is_execve(char **s, list_t *env, int n)
 		pid = fork();
 		if (pid == 0)
 		{
-			if (execve(hold, s, NULL) == -1)
+			if (execve(holder, s, NULL) == -1)
 			{
 				_is_not_found(s[0], n, env);
 				custom_exit(s, env);
@@ -44,15 +42,14 @@ int _is_execve(char **s, list_t *env, int n)
 		}
 		else
 		{
-			wait(&stat);
+			wait(&status);
 			_is_free_double_ptr(s);
-			if (i == 0)
-				free(hold);
+			if (t == 0)
+				free(holder);
 		}
 	}
 	return (0);
 }
-
 /**
  * custom_exit - frees input command and linked list
  * @str: command

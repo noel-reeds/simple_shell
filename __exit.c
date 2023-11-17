@@ -11,11 +11,12 @@
 
 int __exit(char **str, list_t *env, int n, char **cmd)
 {
-	int val = 0;
+	int e_value = 0;
 
-	if (str[1])
-		val = _is_atoi(str[1]);
-	if (val == -1)
+	if (str[1] != NULL)
+		e_value = _is_atoi(str[1]);
+
+	if (e_value == -1)
 	{
 		_is_illegal_number(str[1], n, env);
 		_is_free_double_ptr(str);
@@ -23,7 +24,7 @@ int __exit(char **str, list_t *env, int n, char **cmd)
 	}
 	_is_free_double_ptr(str);
 	_is_free_linked_list(env);
-	if (cmd)
+	if (cmd != NULL)
 		_is_free_double_ptr(cmd);
-	exit(val);
+	exit(e_value);
 }

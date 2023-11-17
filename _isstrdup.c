@@ -9,19 +9,26 @@
  */
 char *_isstrdup(char *str)
 {
-	int m, len2;
 	char *dup_str;
+	int i, len = 0;
 
-	len2 = 0;
-	if (str == NULL)
+	if (!str)
 		return (NULL);
-	while (*(str + len2))
-		len2++;
-	len2++;
-	dup_str = malloc(sizeof(char) * len2);
-	if (dup_str == NULL)
+
+	while (*(str + len))
+		len++;
+	len++;
+
+	dup_str = malloc(sizeof(char) * len);
+	if (!dup_str)
 		return (NULL);
-	for (m = 0; m < len2; m++)
-		*(dup_str + m) = *(str + m);
+
+	i = 0;
+	while (i < len)
+	{
+		*(dup_str + i) = *(str + i);
+		i++;
+	}
+
 	return (dup_str);
 }

@@ -10,23 +10,23 @@
 
 int custom_setenv(list_t **env, char *n, char *dir)
 {
-	int i = 0, j = 0;
+	int index = 0, j = 0;
 	char *cat;
-	list_t *hold;
+	list_t *holder;
 
 	cat = _isstrdup(n);
 	cat = _isstrcat(cat, "=");
 	cat = _isstrcat(cat, dir);
-	i = find_env(*env, n);
+	index = find_env(*env, n);
 
-	hold = *env;
-	while (j < i)
+	holder = *env;
+	while (j < index)
 	{
-		hold = hold->next;
+		holder = holder->next;
 		j++;
 	}
-	free(hold->var);
-	hold->var = _isstrdup(cat);
+	free(holder->var);
+	holder->var = _isstrdup(cat);
 	free(cat);
 	return (0);
 }

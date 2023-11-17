@@ -9,13 +9,13 @@
 list_t *_is_env_linked_list(char **env)
 {
 	list_t *head;
-	int j = 0;
+	int i = 0;
 
 	head = NULL;
-	while (env[j])
+	while (env[i])
 	{
-		add_end_node(&head, env[j]);
-		j++;
+		add_end_node(&head, env[i]);
+		i++;
 	}
 	return (head);
 }

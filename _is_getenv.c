@@ -12,17 +12,22 @@ char *custom_strdup(char *str, int c)
 	char *dup_str;
 	int i, len = 0;
 
-	if (!str)
+	if (str == NULL)
 		return (NULL);
+
 	while (*(str + len))
 		len++;
 	len++;
-	dup_str = malloc(sizeof(char) * (len - c + 1));
-	if (!dup_str)
+
+	dup_str = malloc(sizeof(char) * (len - c));
+	if (dup_str == NULL)
 		return (NULL);
-	for (i = 0; i < (len - c); i++)
+
+	i = 0;
+	while (i < (len - c))
 	{
 		*(dup_str + i) = *(str + c + i);
+		i++;
 	}
 	return (dup_str);
 }
@@ -36,22 +41,20 @@ char *custom_strdup(char *str, int c)
 
 char *_is_getenv(char *str, list_t *env)
 {
-	int i, c;
+	int j = 0, cs = 0;
 
 	while (env != NULL)
 	{
-		for (i = 0; (env->var)[i] == str[i]; i++)
-			;
-		if (str[i] == '\0' && (env->var)[i] == '=')
+		j = 0;
+		while ((env->var)[j] == str[j])
+			j++;
+		if (str[j] == '\0' && (env->var)[j] == '=')
 			break;
 		env = env->next;
 	}
 
-	for (c = 0; str[c] != '\0'; c++)
-		;
-	c++;
-	if (env != NULL)
-		return (custom_strdup(env->var, c));
-	else
-		return (NULL);
+	while (str[cs] != '\0')
+		cs++;
+	cs++;
+	return (custom_strdup(env->var, cs));
 }

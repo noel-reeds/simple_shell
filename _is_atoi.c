@@ -8,16 +8,16 @@
 
 int _is_atoi(char *str)
 {
-	int m = 0;
-	unsigned int n = 0;
+	int i = 0;
+	unsigned int num = 0;
 
-	while (str[m] != '\0')
+	while (str[i] != '\0')
 	{
-		if (str[m] >= '0' && str[m] <= '9')
-			n = n * 10 + (str[m] - '0');
-		if (str[m] > '9' || str[m] < '0')
+		if (str[i] >= '0' && str[i] <= '9')
+			num = num * 10 + (str[i] - '0');
+		if (str[i] > '9' || str[i] < '0')
 			return (-1);
-		m++;
+		i++;
 	}
-	return (n);
+	return (num);
 }

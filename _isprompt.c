@@ -10,39 +10,38 @@
 int _is_prompt(char **en)
 {
 	list_t *env;
-	size_t i, m = 0;
-	int cmd_line_no = 0, exit_stat = 0;
-	char *cmd, *n_cmd, **tk;
+	size_t i = 0, n = 0;
+	int command_line_no = 0, exit_stat = 0;
+	char *command, *n_command, **token;
 
 	env = _is_env_linked_list(en);
 	do {
-		cmd_line_no++;
+		command_line_no++;
 		if (isatty(STDIN_FILENO))
 			write(STDOUT_FILENO, "$ ", 2);
 		else
 			_is_non_interactive(env);
 		signal(SIGINT, _is_ctrl_C);
-		cmd = NULL;
-		i = _is_getline(&cmd);
-		_is_ctrl_D(i, cmd, env);
-		n_cmd = cmd;
-		cmd = _is_ignore_space(cmd);
-		while (cmd[m] != '\n')
-			m++;
-		cmd[m] = '\0';
-		if (cmd[0] == '\0')
+		command = NULL; i = 0;
+		i = _is_getline(&command);
+		_is_ctrl_D(i, command, env);
+		n_command = command;
+		command = _is_ignore_space(command);
+		n = 0;
+		while (command[n] != '\n')
+			n++;
+		command[n] = '\0';
+		if (command[0] == '\0')
 		{
-			free(n_cmd);
-			continue;
+			free(n_command); continue;
 		}
-		tk = NULL;
-		tk = _isstr_tok(cmd, " ");
-		if (n_cmd)
-			free(n_cmd);
-		exit_stat = _is_built_in(tk, env, cmd_line_no, NULL);
+		token = NULL; token = _isstr_tok(command, " ");
+		if (n_command != NULL)
+			free(n_command);
+		exit_stat = _is_built_in(token, env, command_line_no, NULL);
 		if (exit_stat)
 			continue;
-		_is_execve(tk, env, cmd_line_no);
+		exit_stat = _is_execve(token, env, command_line_no);
 	} while (1);
 	return (exit_stat);
 }

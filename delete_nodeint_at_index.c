@@ -3,36 +3,38 @@
 /**
  * delete_nodeint_at_index - remove node at index
  * @head: head address
- * @index: index
+ * @i: index
  * Return: 1 if success or -1 if failure
  */
 
-int delete_nodeint_at_index(list_t **head, int index)
+int delete_nodeint_at_index(list_t **head, int i)
 {
 	list_t *n_head;
-	list_t *hold;
-	int cn;
+	list_t *holder;
+	int count = 0;
 
 	if (!*head)
 		return (-1);
-	if (index == 0)
+	if (i == 0)
 	{
-		hold = (*head)->next;
+		holder = (*head)->next;
 		free((*head)->var);
 		free(*head);
-		*head = hold;
-		return (-1);
+		*head = holder;
+		return (1);
 	}
+	count = 1;
 	n_head = *head;
-	for (cn = 1; cn < index; cn++)
+	while (count < i)
 	{
-		if (!n_head)
+		if (n_head == NULL)
 			return (-1);
 		n_head = n_head->next;
+		count++;
 	}
-	hold = n_head->next;
-	n_head->next = hold->next;
-	free(hold->var);
-	free(hold);
+	holder = n_head->next;
+	n_head->next = holder->next;
+	free(holder->var);
+	free(holder);
 	return (1);
 }

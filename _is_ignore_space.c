@@ -9,8 +9,6 @@
 char *_is_ignore_space(char *str)
 {
 	while (*str == ' ')
-	{
 		str++;
-	}
 	return (str);
 }

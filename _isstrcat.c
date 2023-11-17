@@ -9,28 +9,31 @@
 
 char *_isstrcat(char *dest, char *src)
 {
-	int len = 0, len2 = 0, t_len = 0, i = 0;
+	int len = 0;
+	int len2 = 0;
+	int total = 0;
+	int j = 0;
 
 	while (dest[len] != '\0')
 	{
 		len++;
-		t_len++;
+		total++;
 	}
-
 	while (src[len2] != '\0')
 	{
 		len2++;
-		t_len++;
+		total++;
 	}
 
-	dest = _isrealloc(dest, len, sizeof(char) * (t_len + 1));
+	dest = _isrealloc(dest, len, sizeof(char) * total + 1);
 
-	while (src[i] != '\0')
+	while (src[j] != '\0')
 	{
-		dest[len] = src[i];
+		dest[len] = src[j];
 		len++;
-		i++;
+		j++;
 	}
 	dest[len] = '\0';
+
 	return (dest);
 }
