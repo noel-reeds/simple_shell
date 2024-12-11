@@ -42,7 +42,7 @@ char **_isstr_tok(char *str, char *delm);
 char **custom_str_tok(char *str, char *delm);
 char *_isstrcat(char *dest, char *src);
 char *_isstrdup(char *str);
-char *_isstrcpy(char *dest, char *src);
+char *custom_strcpy(char *dest, char *src);
 int _isstrcmp(char *str1, char *str2);
 char *custom_strcat(char *dest, char *src);
 int custom_setenv(list_t **env, char *n, char *dir);
