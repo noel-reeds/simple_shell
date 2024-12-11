@@ -1,32 +1,44 @@
 #include "shell.h"
 
 /**
- * custom_setenv - set environmnt by concatinating string before setting
- * @env: environment variable
- * @n: environmnt name
- * @dir: directory path
- * Return:0 success
+ * _setenv - create or modify environment
+ * @env: environmnt variable
+ * @str: input command
+ * Return: 0 on success and 1 on failure
  */
 
-int custom_setenv(list_t **env, char *n, char *dir)
+int _setenv(list_t **env, char **str)
 {
 	int index = 0, j = 0;
 	char *cat;
 	list_t *holder;
 
-	cat = _isstrdup(n);
-	cat = _isstrcat(cat, "=");
-	cat = _isstrcat(cat, dir);
-	index = find_env(*env, n);
-
-	holder = *env;
-	while (j < index)
+	if (str[1] == NULL || str[2] == NULL)
 	{
-		holder = holder->next;
-		j++;
+		write(STDOUT_FILENO, "Too few arguments\n", 18);
+		_is_free_double_ptr(str);
+		return (-1);
 	}
-	free(holder->var);
-	holder->var = _isstrdup(cat);
+	cat = _isstrdup(str[1]);
+	cat = _isstrcat(cat, "=");
+	cat = _isstrcat(cat, str[2]);
+	index = find_env(*env, str[1]);
+	if (index == -1)
+	{
+		add_end_node(env, cat);
+	}
+	else
+	{
+		holder = *env;
+		while (j < index)
+		{
+			holder = holder->next;
+			j++;
+		}
+		free(holder->var);
+		holder->var = _isstrdup(cat);
+	}
 	free(cat);
+	_is_free_double_ptr(str);
 	return (0);
 }

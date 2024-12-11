@@ -1,33 +1,32 @@
 #include "shell.h"
 
 /**
- * custom_strcat - concatinate two strings ignoring the first character
- * @dest: string to be appended to
+ * _isstrcat - funtion that concatinat two strings
+ * @dest: string to append to
  * @src: string to append
- * Return: concatinated string
+ * Return: concatinated string dest
  */
 
-char *custom_strcat(char *dest, char *src)
+char *_isstrcat(char *dest, char *src)
 {
 	int len = 0;
 	int len2 = 0;
-	int total_len = 0;
+	int total = 0;
 	int j = 0;
 
 	while (dest[len] != '\0')
 	{
 		len++;
-		total_len++;
+		total++;
 	}
 	while (src[len2] != '\0')
 	{
 		len2++;
-		total_len++;
+		total++;
 	}
 
-	dest = _isrealloc(dest, len, sizeof(char) * total_len + 1);
+	dest = _isrealloc(dest, len, sizeof(char) * total + 1);
 
-	j = 1;
 	while (src[j] != '\0')
 	{
 		dest[len] = src[j];
